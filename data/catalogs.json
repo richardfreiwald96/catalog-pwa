@@ -1,0 +1,70 @@
+[
+  {
+    "id": "zimmer-esd-2025",
+    "title": "ZIMMER – Catalog ESD 2025",
+    "brand": "ZIMMER",
+    "category": [
+      "ESD",
+      "Scaune"
+    ],
+    "year": 2025,
+    "language": [
+      "EN"
+    ],
+    "cover_url": "/covers/zimmer.jpg",
+    "pdf_url": "/pdf/sample.pdf",
+    "pages": 12,
+    "tags": [
+      "clean-room",
+      "antistatic",
+      "chairs",
+      "industry"
+    ],
+    "updated_at": "2025-10-01T08:00:00Z",
+    "featured": true
+  },
+  {
+    "id": "destaco-clamps-2024",
+    "title": "DESTACO – Clamping Solutions 2024",
+    "brand": "DESTACO",
+    "category": [
+      "Clamping"
+    ],
+    "year": 2024,
+    "language": [
+      "EN"
+    ],
+    "cover_url": "/covers/destaco.jpg",
+    "pdf_url": "/pdf/sample.pdf",
+    "pages": 8,
+    "tags": [
+      "clamps",
+      "automation",
+      "workholding"
+    ],
+    "updated_at": "2024-09-12T10:00:00Z",
+    "featured": false
+  },
+  {
+    "id": "denios-atex-2025",
+    "title": "DENIOS – Soluții ATEX 2025",
+    "brand": "DENIOS",
+    "category": [
+      "ATEX"
+    ],
+    "year": 2025,
+    "language": [
+      "RO"
+    ],
+    "cover_url": "/covers/denios.jpg",
+    "pdf_url": "/pdf/sample.pdf",
+    "pages": 16,
+    "tags": [
+      "atex",
+      "safety",
+      "storage"
+    ],
+    "updated_at": "2025-07-20T10:00:00Z",
+    "featured": true
+  }
+]

@@ -1,0 +1,1 @@
+# Catalog PWA Starter (Next.js)\n\nInstalare: `npm i` → `npm run dev` → http://localhost:3000\n
