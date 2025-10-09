@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import catalogs from import catalogs from '../../../data/catalogs.json';
+import catalogs from '../data/catalogs.json';
 import QRCode from 'qrcode';
 import Link from 'next/link';
 
