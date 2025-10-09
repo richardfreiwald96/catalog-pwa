@@ -4,6 +4,9 @@ const withPWA = require('next-pwa')({
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
+  fallbacks: {
+    document: '/offline.html',
+  },
   runtimeCaching: [
     // 🧭 Pagini și interfață
     {
@@ -44,9 +47,7 @@ const withPWA = require('next-pwa')({
   ],
 });
 
-const nextConfig = {
+module.exports = withPWA({
   reactStrictMode: true,
   images: { unoptimized: true },
-};
-
-module.exports = withPWA(nextConfig);
+});
