@@ -1,26 +1,52 @@
 /** @type {import('next').NextConfig} */
-const runtimeCaching = [
-  {
-    urlPattern: /^https?:\/\/(?:localhost|[\w.-]+)\/.*/,
-    handler: 'NetworkFirst',
-    options: {
-      cacheName: 'html-pages',
-      expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 7 },
-      networkTimeoutSeconds: 3,
-    },
-  },
-  { urlPattern: /\.(?:js|css)$/, handler: 'StaleWhileRevalidate', options: { cacheName: 'static-resources', expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 } } },
-  { urlPattern: /\/covers\/.*\.(?:png|jpg|jpeg|gif|webp|avif)$/, handler: 'CacheFirst', options: { cacheName: 'catalog-covers', expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 30 } } },
-  { urlPattern: /\/pdf\/.*\.pdf$/, handler: 'NetworkFirst', options: { cacheName: 'catalog-pdfs', expiration: { maxEntries: 6, maxAgeSeconds: 60 * 60 * 24 * 7 } } },
-  { urlPattern: /\/manifest\.json$/, handler: 'StaleWhileRevalidate', options: { cacheName: 'pwa-manifest' } },
-  { urlPattern: /\/icons\/.*\.(?:png|svg|ico)$/, handler: 'CacheFirst', options: { cacheName: 'pwa-icons', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } } },
-];
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  runtimeCaching,
   disable: process.env.NODE_ENV === 'development',
+  runtimeCaching: [
+    // 🧭 Pagini și interfață
+    {
+      urlPattern: /^https?.*/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'pages-cache',
+        expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 30 },
+      },
+    },
+    // 🧱 Scripturi și CSS
+    {
+      urlPattern: /.*\.(?:js|css)$/,
+      handler: 'StaleWhileRevalidate',
+      options: {
+        cacheName: 'static-cache',
+        expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 30 },
+      },
+    },
+    // 🖼️ Imagini (coperți, logo-uri)
+    {
+      urlPattern: /.*\.(?:png|jpg|jpeg|gif|webp|svg|ico)$/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'image-cache',
+        expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 60 },
+      },
+    },
+    // 📚 PDF-uri (cache complet, pentru mod avion)
+    {
+      urlPattern: /.*\.pdf$/,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'pdf-cache',
+        expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 60 },
+      },
+    },
+  ],
 });
-const nextConfig = { reactStrictMode: true, images: { unoptimized: true } };
+
+const nextConfig = {
+  reactStrictMode: true,
+  images: { unoptimized: true },
+};
+
 module.exports = withPWA(nextConfig);
