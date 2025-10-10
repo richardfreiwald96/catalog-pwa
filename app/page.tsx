@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import catalogs from '../../../data/catalogs.json';
+import catalogs from '../data/catalogs.json';
 import React from 'react';
 
 export default function Home() {
