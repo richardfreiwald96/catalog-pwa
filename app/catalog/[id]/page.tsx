@@ -4,7 +4,7 @@ import catalogs from "../../../data/catalogs.json";
 import QRCode from "qrcode";
 import Link from "next/link";
 
-export async function generateStaticParams() {
+export 
   // @ts-ignore
   const catalogs = (await import("../../../data/catalogs.json")).default || [];
   return catalogs.map((c: any) => ({ id: c.id }));
