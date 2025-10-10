@@ -1,20 +1,5 @@
 [
   {
-    "id": "k1-2025-ro",
-    "title": "Catalog K1 2025 (RO)",
-    "brand": "K1",
-    "category": ["Industrial"],
-    "year": 2025,
-    "language": ["RO"],
-    "cover_url": "/covers/k1-2025-ro.jpg",
-    "pdf_url": "/pdf/K1-2025_ro.pdf",
-    "pages": 100,
-    "tags": ["industrial", "echipamente", "catalog"],
-    "updated_at": "2025-10-10T08:00:00Z",
-    "featured": true,
-    "logo_url": "/icons/siegmund-logo.png"
-  },
-  {
     "id": "siegmund-2025",
     "title": "Catalog Siegmund 2025",
     "brand": "Siegmund",
@@ -22,10 +7,11 @@
     "year": 2025,
     "language": ["RO"],
     "cover_url": "/covers/siegmund-2025.jpg",
-    "pdf_url": "/pdf/siegmund-2025.pdf",
+    "pdf_url": "/pdf/K1-2025_ro.pdf",
     "pages": 200,
     "tags": ["sudura", "mese", "sisteme"],
     "updated_at": "2025-10-10T08:00:00Z",
-    "featured": true
+    "featured": true,
+    "logo_url": "/icons/siegmund-logo.png"
   }
 ]
