@@ -1,3 +1,8 @@
+export async function generateStaticParams() {
+	// @ts-ignore
+	const catalogs = (await import("../../../data/catalogs.json")).default || [];
+	return catalogs.map((c: any) => ({ id: c.id }));
+}
 "use client";
 import { useEffect, useRef, useState } from "react";
 import catalogs from "../../../data/catalogs.json";
