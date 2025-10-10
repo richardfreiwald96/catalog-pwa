@@ -56,9 +56,19 @@ export default function CatalogPage({ params }: { params: { id: string } }) {
     <main>
       <div className="topbar">
         <h1>{item.title}</h1>
+        {item.logo_url && (
+          <img src={item.logo_url} alt={item.brand + ' logo'} style={{height:'40px',marginLeft:'1rem'}} />
+        )}
         <Link href="/" className="badge">Înapoi</Link>
       </div>
 
+      <div style={{position:'relative',display:'inline-block'}}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={item.cover_url} alt={item.title} style={{width:'100%',maxWidth:'400px',borderRadius:'8px'}} />
+        {item.logo_url && (
+          <img src={item.logo_url} alt={item.brand + ' logo'} style={{position:'absolute',top:'10px',right:'10px',height:'40px',background:'rgba(255,255,255,0.8)',borderRadius:'6px',padding:'4px'}} />
+        )}
+      </div>
       <p><strong>Brand:</strong> {item.brand} · <strong>An:</strong> {item.year}</p>
       <div className="tags">
         {item.tags.map((t: string) => (
