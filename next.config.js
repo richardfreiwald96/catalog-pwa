@@ -24,4 +24,22 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   reactStrictMode: true,
   images: { unoptimized: true },
+  // Configurare pentru fișiere mari
+  experimental: {
+    largePageDataBytes: 512 * 1024, // 512KB
+  },
+  // Headers pentru PDF-uri mari
+  async headers() {
+    return [
+      {
+        source: '/pdf/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 });
