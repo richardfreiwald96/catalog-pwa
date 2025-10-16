@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "pages/api/*.js": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/pdf/(.*)",
@@ -17,12 +12,6 @@
           "value": "application/pdf"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/pdf/:path*",
-      "destination": "/pdf/:path*"
     }
   ]
 }
