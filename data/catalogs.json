@@ -6,12 +6,27 @@
     "category": ["Sudură", "Echipamente"],
     "year": 2025,
     "language": ["RO"],
-  "cover_url": "/covers/siegmung-logo.png.jpg",
+    "cover_url": "/covers/siegmung-logo.png.jpg",
     "pdf_url": "/pdf/K1-2025_ro.pdf",
     "pages": 200,
     "tags": ["sudura", "mese", "sisteme"],
     "updated_at": "2025-10-10T08:00:00Z",
     "featured": true,
-  "logo_url": "/icons/siegmung-logo.png.jpg"
+    "logo_url": "/icons/siegmung-logo.png.jpg"
+  },
+  {
+    "id": "parcon-freiwald-2025",
+    "title": "Catalog Parcon Freiwald 2025",
+    "brand": "Parcon Freiwald",
+    "category": ["Scule", "Echipamente"],
+    "year": 2025,
+    "language": ["RO"],
+    "cover_url": "/covers/parcon-freiwald-cover.bmp",
+    "pdf_url": "/pdf/parcon-freiwald-2025.pdf",
+    "pages": 150,
+    "tags": ["scule", "unelte", "echipamente"],
+    "updated_at": "2025-10-16T08:00:00Z",
+    "featured": false,
+    "logo_url": "/icons/parcon-freiwald-logo.bmp"
   }
 ]
