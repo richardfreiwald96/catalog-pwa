@@ -24,10 +24,8 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   reactStrictMode: true,
   images: { unoptimized: true },
-  // Configurare pentru fișiere mari
-  experimental: {
-    largePageDataBytes: 512 * 1024, // 512KB
-  },
+  // Configurare pentru deployment stabil
+  swcMinify: true,
   // Headers pentru PDF-uri mari
   async headers() {
     return [
