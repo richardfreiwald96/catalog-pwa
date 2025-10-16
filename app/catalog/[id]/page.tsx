@@ -24,6 +24,7 @@ export default function CatalogPage({ params }: { params: { id: string } }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [shareUrl, setShareUrl] = useState('');
   const [viewerSrc, setViewerSrc] = useState(item?.pdf_url || '');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!item) return;
@@ -41,6 +42,18 @@ export default function CatalogPage({ params }: { params: { id: string } }) {
     if (!item) return;
     getPdfUrlOfflineAware(item.pdf_url).then(setViewerSrc);
   }, [item]);
+
+  // Simplu timeout pentru loading
+  useEffect(() => {
+    if (!item || !viewerSrc) return;
+    
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2 secunde loading
+
+    return () => clearTimeout(timer);
+  }, [viewerSrc]);
 
   if (!item) {
     return (
@@ -89,9 +102,31 @@ export default function CatalogPage({ params }: { params: { id: string } }) {
         <div className="qr"><canvas ref={canvasRef} /></div>
       </div>
 
-      {/* IMPORTANT: folosim viewerSrc (online sau blob din cache când e offline) */}
-      <embed className="viewer" src={viewerSrc} type="application/pdf" />
-      <p style={{ color:'#666', fontSize:'.9rem' }}>Dacă viewer-ul nu pornește, folosește butonul “Descarcă PDF”.</p>
+      {/* PDF Viewer optimizat */}
+      <div style={{ width: '100%', height: '600px', border: '1px solid #ddd', borderRadius: '8px', marginBottom: '1rem' }}>
+        {loading ? (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            <p>Se încarcă PDF-ul...</p>
+          </div>
+        ) : (
+          <object 
+            data={viewerSrc} 
+            type="application/pdf" 
+            style={{ width: '100%', height: '100%' }}
+          >
+            <p>Browser-ul nu poate afișa PDF-ul. 
+              <a href={viewerSrc} target="_blank" rel="noreferrer" className="badge" style={{ marginLeft: '0.5rem' }}>
+                Deschide în tab nou
+              </a>
+            </p>
+          </object>
+        )}
+      </div>
+      <p style={{ color:'#666', fontSize:'.9rem' }}>
+        Pentru o vizualizare optimă, folosește butonul "Descarcă PDF" sau deschide în tab nou.
+        <br />
+        <strong>Pagini totale:</strong> {item.pages || 'N/A'}
+      </p>
     </main>
   );
 }
